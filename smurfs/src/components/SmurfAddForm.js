@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { addSmurf } from "../actions/actions";
+import { Container } from "semantic-ui-react";
 
 class SmurfAddForm extends React.Component {
   constructor(props) {
@@ -30,7 +31,7 @@ class SmurfAddForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <Container>
         <form onSubmit={this.addSmurf}>
           <input
             type="text"
@@ -65,7 +66,7 @@ class SmurfAddForm extends React.Component {
             )}
           </button>
         </form>
-      </div>
+      </Container>
     );
   }
 }
