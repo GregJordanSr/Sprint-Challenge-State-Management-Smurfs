@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import SmurfAddForm from './SmurfAddForm';
 import { getSmurfs } from '../actions/actions';
 import SmurfVillage from './SmurfVillage';
+import { Header, Segment, Divider } from "semantic-ui-react";
 
 class App extends Component {
 
@@ -14,13 +15,16 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div>
-          <h1>Smurf Village</h1>
-        </div>
-        <div>
-          <SmurfVillage smurfs={this.props.smurfs} />
-          <SmurfAddForm />
-        </div>
+        <Segment >
+          <Header as='h1' color="blue">
+            Smurf Village
+          </Header>
+         <Divider hidden />
+          <div>
+            <SmurfVillage smurfs={this.props.smurfs} />
+            <SmurfAddForm />
+          </div>
+        </Segment>
       </div>
     )
   }

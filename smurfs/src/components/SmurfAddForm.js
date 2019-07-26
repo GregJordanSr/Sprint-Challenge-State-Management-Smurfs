@@ -1,7 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
 import { addSmurf } from "../actions/actions";
-import { Container, Form, Button } from "semantic-ui-react";
+import {
+  Container,
+  Form,
+  Button,
+  Input,
+  Divider,
+  Label
+} from "semantic-ui-react";
 
 class SmurfAddForm extends React.Component {
   constructor(props) {
@@ -32,10 +39,12 @@ class SmurfAddForm extends React.Component {
   render() {
     return (
       <Container>
+        <Divider hidden />
         <Form onSubmit={this.addSmurf}>
           <Form.Field>
-            <label>Add Smurf Name</label>
-            <input
+            <Label color="blue">Smurf Name</Label>
+            <Input
+              focus
               type="text"
               name="name"
               placeholder="Add Name"
@@ -44,37 +53,37 @@ class SmurfAddForm extends React.Component {
             />
           </Form.Field>
           <Form.Field>
-            <label>Add Smurf Age</label>
-                <input
-                type="text"
-                name="age"
-                placeholder="Add Age"
-                onChange={this.handleChange}
-                value={this.state.newSmurf.age}
-                />
+            <Label color="blue">Smurf Age</Label>
+            <Input
+              type="text"
+              name="age"
+              placeholder="Add Age"
+              onChange={this.handleChange}
+              value={this.state.newSmurf.age}
+            />
           </Form.Field>
           <Form.Field>
-            <label>Add Smurf Height</label>
-                <input
-                type="text"
-                name="height"
-                placeholder="Add Height"
-                onChange={this.handleChange}
-                value={this.state.newSmurf.height}
-                />
+            <Label color="blue">Smurf Height</Label>
+            <Input
+              type="text"
+              name="height"
+              placeholder="Add Height"
+              onChange={this.handleChange}
+              value={this.state.newSmurf.height}
+            />
           </Form.Field>
 
           {this.props.addError ? <h3>There was a smurf-up</h3> : null}
           {this.props.successMessage ? (
             <h3>Welcome {this.state.newSmurf.name} smurf to our village!</h3>
           ) : null}
-          <button type="submit">
+          <Button basic color="blue" content="blue" type="submit">
             {this.props.addingSmurf ? (
               <h5>Adding to village...</h5>
             ) : (
               "Add Smurf"
             )}
-          </button>
+          </Button>
         </Form>
       </Container>
     );
