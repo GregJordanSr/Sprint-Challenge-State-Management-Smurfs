@@ -1,16 +1,42 @@
 import React, { Component } from "react";
 import "./App.css";
+import { connect } from 'react-redux';
+import SmurfAddForm from './SmurfAddForm';
+import { getSmurfs } from '../actions/actions';
+import SmurfVillage from './SmurfVillage';
+import { Header, Segment, Divider } from "semantic-ui-react";
+
 class App extends Component {
+
+  componentDidMount() {
+    this.props.getSmurfs();
+  }
+
   render() {
     return (
       <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your state management version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+        <Segment >
+          <Header as='h1' color="blue">
+            Smurf Village
+          </Header>
+         <Divider hidden />
+          <div>
+            <SmurfVillage smurfs={this.props.smurfs} />
+            <SmurfAddForm />
+          </div>
+        </Segment>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  smurfs: state.smurfs,
+  fetchingSmurfs: state.fetchingSmurfs,
+  addError: state.addError,
+  addSuccess: state.addSuccess
+})
+
+
+export default connect(mapStateToProps, { getSmurfs })(App);
+
